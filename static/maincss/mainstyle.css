@@ -1,0 +1,59 @@
+.back {
+
+            height: 50px;
+            display: flex;
+            justify-content: right;
+
+
+        }
+
+        .search1 {
+            background-image: url("https://images.unsplash.com/photo-1517210122415-b0c70b2a09bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGlua3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=300&q=60");
+            background-position: center;
+            background-size: cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .card1 {
+            display: inline-flex;
+            text-align: center;
+            flex-wrap: wrap;
+            margin: 10px;
+
+
+        }
+
+        .card-img-top {
+            height: 300px;
+        }
+        .card {
+            margin-left: 10px;
+        }
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 20px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+
+            display: none;
+        }
+        .btn2 {
+
+            width: 200px;
+            height: 50px;
+
+            background-color: transparent;
+            color: purple;
+
+            border-radius: 50px;
+            border: 1px solid purple;
+
+            margin-top: 10px;
+        }
+        .mybtns > button {
+            margin-right: 10px;
+        }
