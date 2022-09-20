@@ -1,10 +1,13 @@
+from re import M
 from flask import Flask, render_template, request, jsonify
 
 from pymongo import MongoClient
-import certifi
 
-ca = certifi.where()
-client = MongoClient('mongodb+srv://youwa65:ss3108@cluster0.wrjvztk.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
+
+
+
+
+client = MongoClient('mongodb+srv://youwa65:ss3108@cluster0.wrjvztk.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.cafe
 
 app = Flask(__name__)
@@ -15,7 +18,7 @@ def main():
     return render_template("main.html")
 
 
-@app.route('/detail/1')
+@app.route('/detail/<id>',methods=['GET','POST'])
 def detail():
     return render_template("detail.html")
 
