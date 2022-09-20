@@ -1,4 +1,4 @@
-from re import M
+
 from flask import Flask, render_template, request, jsonify
 
 from pymongo import MongoClient
@@ -34,7 +34,11 @@ def login():
 def cafe_post():
     url_receive = request.form['url_give']
     name_receive = request.form['name_give']
+    counts = list(db.cafes1.find({}, {'_id': False}))
+
+    count = len(counts) + 1
     doc = {
+        'id' : count,
         'content' : "",
         'url': url_receive,
         'name': name_receive
