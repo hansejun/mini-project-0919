@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="widspan class="detail-th=device-widspan class="detail-th", initial-scale="1.0" />
-    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href='{{ url_for("static", filename="css/style.css") }}' />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <title></title>
     <script></script>
@@ -14,29 +14,29 @@
       <nav class="detail-nav shadow">
         <a href="/"><h2 class="nav-logo">CAFFE O TTE</h2></a>
         <ul>
-          <a href="/login"><li>로그인</li></a>
-          <a href="/join"><li>회원가입</li></a>
-          <a href="/profile"><li>프로필</li></a>
-          <a href="/logout"><li>로그아웃</li></a>
+          <a href="/login" class="login"><li>로그인</li></a>
+          <a href="/join" class="join"><li>회원가입</li></a>
+          <a href="/profile" class="hidden profile"><li>프로필</li></a>
+          <a href="/logout" class="hidden logout"><li>로그아웃</li></a>
         </ul>
       </nav>
     </header>
     <main class="detail-main">
       <div class="detail-wrapper">
         <section class="detail-photo">
-          <img src='https://coffee.alexflipnote.dev/random'>
+          <img src='https://coffee.alexflipnote.dev/random' class="cafe-image">
           <img src='https://coffee.alexflipnote.dev/random'>
           <img src='https://coffee.alexflipnote.dev/random'>
           <img src='https://coffee.alexflipnote.dev/random'>
         </section>
         <section class="detail-info">
           <div class="detail-info__header">
-            <h2>따빠디또 디저트 따빠스바</h2>
+            <h2 class="cafe-title">따빠디또 디저트 따빠스바</h2>
             <div>
-              <span>4.7</span>
+              <span class="cafe-rate">4.7</span>
               <div>
                 <i class="far fa-comment-alt"></i>
-                <span>32</span>
+                <span class="review-count">32</span>
               </div>
             </div>
             
@@ -94,24 +94,25 @@
           <div class="detail-cafe__info">
             <div class="detail-cafe__info-comment">
               <span>카페소개</span>
-              <span>** 영업시간 유동적, 업체 문의후 방문권장</span>
+              <span class="cafe-intro">** 영업시간 유동적, 업체 문의후 방문권장</span>
             </div>
             <div></div>
           </div>
         </section>
         <section class="detail-reviews">
-          <div class="detail-reviews__header">리뷰<span>(49)</span></div>
+          <div class="detail-reviews__header">리뷰<span class="review-count">(49)</span></div>
           <div class="detail-reviews__container">
             <div class="detail-reviews__container-item">
               <div>
-                <img />
+                <img class="review-avatar" src="https://avatars.dicebear.com/api/bottts/4.svg" />
+                <span class="review-name">닥터지</span>
               </div>
               <div class="container-item-review">
                 <span class="review-createdAt">2022-08-23</span>
                 <p class="review-comment">너무 맛있습니다~~~~~~</p>
                 <span class="review-rate">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star blue"></i>
+                  <i class="fas fa-star gray"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -121,7 +122,8 @@
             </div>
             <div class="detail-reviews__container-item">
               <div>
-                <img />
+                <img src="https://avatars.dicebear.com/api/bottts/3.svg" />
+                <span class="review-name">바셀린</span>
               </div>
               <div class="container-item-review">
                 <span class="review-createdAt">2022-08-22</span>
@@ -138,7 +140,8 @@
             </div>
             <div class="detail-reviews__container-item">
               <div>
-                <img />
+                <img src="https://avatars.dicebear.com/api/bottts/2.svg" />
+                <span class="review-name">러시</span>
               </div>
               <div class="container-item-review">
                 <span class="review-createdAt">2022-08-21</span>
@@ -160,11 +163,26 @@
             </div>
           </div>
         </section>
+        <section class="detail-review-form">
+          <form class="review-form">
+            <h2>리뷰 작성하기</h2>
+            <span class="review-form__rate">
+              <button value="1"><i class="fas fa-star star1"></i></button>
+              <button value="2"><i class="fas fa-star star2"></i></button>
+              <button value="3"><i class="fas fa-star star3"></i></button>
+              <button value="4"><i class="fas fa-star star4"></i></button>
+              <button value="5"><i class="fas fa-star star5"></i></button>
+            </span>
+            <textarea class="review-form__text" cols="50" rows="10"></textarea>
+            <button class="review-form__button">리뷰 작성</button>
+          </form>
+        </section>
       </div>
     </main>
     <script
       src="https://kit.fontawesome.com/6478f529f2.js"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src='{{ url_for("static", filename="js/index.js") }}'></script>
   </body>
 </html>

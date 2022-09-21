@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -38,7 +37,6 @@
     </style>
 
     <script>
-
       function join() {
         window.location.href = "/join";
       }
@@ -54,21 +52,21 @@
       function post() {
         let url = $("#url").val();
         let name = $("#name").val();
-        if (url == ''){
-          alert('url을 입력해주세요')
-        } else if (name == '') {
-          alert('카페이름을 입력해주세요')
+        if (url == "") {
+          alert("url을 입력해주세요");
+        } else if (name == "") {
+          alert("카페이름을 입력해주세요");
         } else {
-        $.ajax({
-          type: "POST",
-          url: "/cafe",
-          data: { url_give: url, name_give: name },
-          success: function (response) {
-            alert(response["msg"]);
-            window.location.reload() 
-           },
+          $.ajax({
+            type: "POST",
+            url: "/cafe",
+            data: { url_give: url, name_give: name },
+            success: function (response) {
+              alert(response["msg"]);
+              window.location.reload();
+            },
           });
-       }
+        }
       }
       function cafes() {
         $.ajax({
@@ -78,7 +76,7 @@
           success: function (response) {
             let rows = response["cafes"];
             for (let i = 0; i < rows.length; i++) {
-              // let num = rows[i]['num']
+              let num = rows[i]["num"];
               let name = rows[i]["name"];
               let url = rows[i]["url"];
               let temp_html = `<div class="card" style="width: 18rem;">
@@ -89,23 +87,23 @@
                                     <p style="font-size: 30px;"class="card-text">${name}</p>
                                   </div>
                                 </div>`;
-                              $("#cafe-list").append(temp_html);
-                   }     
-              },
-            });
-          }
+              $("#cafe-list").append(temp_html);
+            }
+          },
+        });
+      }
 
-          function open_box() {
-            $("#post-box").show();
-          }
+      function open_box() {
+        $("#post-box").show();
+      }
 
-          function close_box() {
-            $("#post-box").hide();
-          }
-        </script>
-      </head>
-      <body>
-        <div class="back">
+      function close_box() {
+        $("#post-box").hide();
+      }
+    </script>
+  </head>
+  <body>
+    <div class="back">
       <div class="btn">
         <button onclick="login()" type="button" class="btn btn-primary">
           login
@@ -117,7 +115,7 @@
     </div>
 
     <div class="search1">
-      <h1 style="font-size: 80px;">카 페 어 때</h1>
+      <h1 style="font-size: 80px">카 페 어 때</h1>
       <button class="btn2" onclick="open_box()">카페 기록하기</button>
     </div>
     <div class="mypost" id="post-box">
