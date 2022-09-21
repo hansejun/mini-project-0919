@@ -24,7 +24,9 @@ header nav ul {
 header nav ul li {
   margin-left: 10px;
   color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
 }
 header nav ul li:hover {
   color: black;
+  cursor: pointer;
 }
