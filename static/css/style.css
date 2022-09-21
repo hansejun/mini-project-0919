@@ -1,1 +1,7 @@
 @import "./config/reset.css";
+
+/* components */
+@import "./components/header.css";
+
+/* pages*/
+@import "./pages/detail.css";
