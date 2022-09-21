@@ -57,7 +57,7 @@ def post_review():
   comment = request.form['comment']
   rate = request.form['rate']
   createdAt = request.form['createdAt']
-  print(request.form)
+  
   doc = {
     'userId':userId,
     'cafeId' : int(cafeId),
