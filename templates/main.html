@@ -37,85 +37,73 @@
     </style>
 
     <script>
-            function join() {
-              window.location.href = "/join";
-            }
+      function join() {
+        window.location.href = "/join";
+      }
 
-            function login() {
-              window.location.href = "/login";
-            }
+      function login() {
+        window.location.href = "/login";
+      }
 
-            $(document).ready(function () {
-              cafes();
-            });
+      $(document).ready(function () {
+        cafes();
+      });
 
-            function post() {
-              let url = $("#url").val();
-              let name = $("#name").val();
-              if (url == ''){
-                alert('url을 입력해주세요')
-                return;
-              }
-              if (name == '') {
-                alert('카페이름을 입력해주세요')
-                return;
-              } else {
-                $.ajax({
-                  type: "POST",
-                  url: "/cafe",
-                  data: { url_give: url, name_give: name },
-                  success: function (response) {
-                    alert(response["msg"]);
-                    window.location.reload();
-                  },
-                });
-              }
+      function post() {
+        let url = $("#url").val();
+        let name = $("#name").val();
+        if (url == "") {
+          alert("url을 입력해주세요");
+          return;
+        }
+        if (name == "") {
+          alert("카페이름을 입력해주세요");
+          return;
+        } else {
+          $.ajax({
+            type: "POST",
+            url: "/cafe",
+            data: { url_give: url, name_give: name },
+            success: function (response) {
+              alert(response["msg"]);
+              window.location.reload();
+            },
+          });
+        }
+      }
+      function cafes() {
+        $.ajax({
+          type: "GET",
+          url: "/cafes",
+          data: {},
+          success: function (response) {
+            console.log(response["cafes"]);
+            let rows = response["cafes"];
+            for (let i = 0; i < rows.length; i++) {
+              let num = rows[i]["num"];
+              let name = rows[i]["name"];
+              let url = rows[i]["url"];
+              let temp_html = `<div class="card" style="width: 18rem;">
+                                  <a href="detail">
+                                  <img class="card-img-top" src="${url}" alt="Card image cap">
+                                  </a>
+                                  <div class="card-body">
+                                    <p style="font-size: 30px;"class="card-text">${name}</p>
+                                  </div>
+                                </div>`;
+              $("#cafe-list").append(temp_html);
             }
-            function cafes() {
-              $.ajax({
-                type: "GET",
-                url: "/cafes",
-                data: {},
-                success: function (response) {
-                  console.log(response['cafes'])
-                  let rows = response["cafes"];
-                  for (let i = 0; i < rows.length; i++) {
-                    let num = rows[i]["num"];
-                    let name = rows[i]["name"];
-                    let url = rows[i]["url"];
-                    let temp_html = `<div class="card" style="width: 18rem;">
-                                        <a href="detail">
-                                        <img class="card-img-top" src="${url}" alt="Card image cap">
-                                        </a>
-                                        <div class="card-body">
-                                          <p style="font-size: 30px;"class="card-text">${name}</p>
-                                        </div>
-                                      </div>`;
-      <<<<<<< HEAD
-                                    $("#cafe-list").append(temp_html);
-                         }
-                    },
-                  });
-                }
+          },
+        });
+      }
 
-                function open_box() {
-                  $("#post-box").show();
-                }
-      =======
-                    $("#cafe-list").append(temp_html);
-                  }
-                },
-              });
-            }
+      function open_box() {
+        $("#post-box").show();
+      }
 
-            function open_box() {
-              $("#post-box").show();
-            }
-      >>>>>>> origin/hsj
-
-            function close_box() {
-              $("#post-box").hide();
-            }
+      function close_box() {
+        $("#post-box").hide();
+      }
     </script>
   </head>
   <body>
