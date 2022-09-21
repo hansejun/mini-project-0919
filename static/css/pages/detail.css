@@ -1,0 +1,194 @@
+.detail-main {
+  height: 200vh;
+  padding: 0px 10vw 0px 10vw;
+  padding-top: 60px;
+}
+.detail-wrapper {
+  padding: 0px 10px 0px 10px;
+  width: 100%;
+  background-color: white;
+}
+.detail-photo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  overflow: hidden;
+  gap: 5px;
+  height: 30vh;
+}
+.detail-photo img {
+  width: 100%;
+  width: 100%;
+  height: 30vh;
+  background-image: url("https://source.unsplash.com/640x400/?coffee,cafe");
+  /*background-image: url("https://coffee.alexflipnote.dev/random");*/
+  background-position: center;
+  background-size: cover;
+}
+.detail-info {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px 10px 0px 10px;
+}
+
+/*detail header (제목,평점,리뷰 수)*/
+
+.detail-info__header {
+  width: 100%;
+  display: flex;
+  padding: 30px 00px 30px 0px;
+  font-size: 27px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.detail-info__header h2 {
+  font-weight: 500;
+}
+.detail-info__header > span {
+  margin-left: 15px;
+  color: rgb(81, 133, 247);
+}
+.detail-info__header div {
+  color: rgb(76, 76, 76);
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+/* detail description ( 카페 정보 ) */
+
+.detail-info__description {
+  padding-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 30px;
+}
+.detail-table {
+  width: 100%;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.detail-tr {
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 15px;
+  display: flex;
+}
+.detail-tr a {
+  text-decoration: underline;
+  color: black;
+}
+.detail-th {
+  color: #959595;
+  width: 20%;
+  min-width: 120px;
+}
+.detail-td {
+  color: rgba(0, 0, 0, 0.8);
+}
+.detail-tr a span {
+  color: black;
+}
+.detail-menu {
+  width: 100%;
+}
+.detail-menu div {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 10px 0px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+.detail-menu div:first-child {
+  padding-top: 0;
+}
+.detail-menu div:last-child {
+  border: none;
+}
+
+@media screen and (max-width: 600px) {
+  .detail-table {
+    min-width: 300px;
+  }
+}
+
+/* detail-info 카페 소개 */
+.detail-cafe__info {
+  padding: 30px 0px 30px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: 400px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detail-cafe__info-comment {
+  display: flex;
+  width: 100%;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.detail-cafe__info-comment span:first-child {
+  width: 20%;
+  min-width: 120px;
+  color: #959595;
+}
+
+/* detail-reviews */
+.detail-reviews {
+  padding: 0px 10px 30px 10px;
+}
+.detail-reviews__header {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 30px 0px 30px 0px;
+}
+.detail-reviews__header span {
+  color: rgba(0, 0, 0, 0.5);
+}
+.detail-reviews__container {
+  width: 100%;
+}
+.detail-reviews__container-item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 10px 20px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.detail-reviews__container-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.detail-reviews__container-item div:first-child {
+  min-width: 120px;
+  position: relative;
+}
+
+.detail-reviews__container-item div:first-child img {
+  width: 60px;
+  height: 60px;
+  background-color: gray;
+  border-radius: 50%;
+}
+.container-item-review {
+  display: flex;
+  flex-direction: column;
+}
+.review-createdAt {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.review-comment {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.review-rate {
+  font-size: 13px;
+  color: #5185f7;
+}
