@@ -89,14 +89,18 @@
                 </span class="detail-td">
               </div class="detail-tr">
             </div>
-            <div></div>
+            <div class="map-box">
+              <div id="map"></div>
+            </div>
           </div>
           <div class="detail-cafe__info">
             <div class="detail-cafe__info-comment">
               <span>카페소개</span>
               <span class="cafe-intro">** 영업시간 유동적, 업체 문의후 방문권장</span>
             </div>
-            <div></div>
+            <div>
+             
+            </div>
           </div>
         </section>
         <section class="detail-reviews">
@@ -124,6 +128,7 @@
       src="https://kit.fontawesome.com/6478f529f2.js"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b62d299611d0b1a4e1d36062ad2d435&libraries=services"></script>
     <script type="module" src='{{ url_for("static", filename="js/index.js") }}'></script>
   </body>
 </html>

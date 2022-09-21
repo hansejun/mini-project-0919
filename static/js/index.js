@@ -1,5 +1,6 @@
 import { createReview, getDetail } from "./api.js";
 import { addHtml } from "./util/addHtml.js";
+import { createMap } from "./util/createMap.js";
 
 let cafe = {};
 let reviews = [];
@@ -11,7 +12,8 @@ async function start() {
   const data = await getDetail(1);
   console.log(data);
   cafe = data.data.cafe;
-
+  console.log(cafe);
+  createMap(cafe.address, cafe.name);
   reviews = data.data.reviews;
   addHtml(cafe, reviews);
 }
