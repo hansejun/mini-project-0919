@@ -18,7 +18,12 @@ async function start() {
   const data = await getDetail(Number(path));
   console.log(data);
   cafe = data.data.cafe;
-  createMap(cafe.address, cafe.name);
+  if (cafe.address.length < 10) {
+    $(".map-box").addClass("none");
+  } else {
+    createMap(cafe.address, cafe.name);
+  }
+
   reviews = data.data.reviews;
   addHtml(cafe, reviews);
 }

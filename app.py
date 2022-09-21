@@ -81,7 +81,7 @@ def post_review():
     'createdAt' : createdAt
   }
   print(doc)
-  #db.review.insert_one(doc)
+  db.review.insert_one(doc)
   return jsonify({'success':True})
 
 @app.route('/api/review/<id>',methods=['DELETE'])

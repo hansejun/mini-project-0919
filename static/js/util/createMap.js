@@ -21,12 +21,18 @@ export const createMap = (address, name) => {
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-          content: `<div style="width:150px;text-align:center;padding:6px 0;">${
+          content: `<div class="map-text"style="width:150px;text-align:center;padding:8px 0;">${
             name ? name : "카페"
           }</div>`,
         });
         infowindow.open(map, marker);
+        const textBox = document.querySelector(".map-text");
 
+        const wrapper = textBox.parentElement.parentElement;
+
+        wrapper.className = "map-text__wrapper";
+        wrapper.style.border = "none";
+        console.log(textBox.parentElement.parentElement);
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
       }
