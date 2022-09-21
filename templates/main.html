@@ -34,19 +34,25 @@
       * {
         font-family: "Gowun Dodum", sans-serif;
       }
-      .hidden {
-          display: none;
-        }
+      
     </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
-      let cookie = $.cookie('mytoken');
-      if(cookie) {
-        $('login').toggleClass("hidden")
-        $('join').toggleClass("hidden")
-        $('logout').toggleClass("hidden")
-        $('Profile').toggleClass("hidden")
-      }
+      const cookieExists = $.cookie("mytoken")
+      console.log(cookieExists)
+      $(document).ready(function (){
+            show_sign();
+        });
+        let cookie = $.cookie('mytoken')
+        function show_sign() {
+            if (cookie) {
+                $('#login').hide();
+                $('#join').hide();
+            } else {  
+                $('#logout').hide();
+                $('#Profile').hide();
+              }
+        }
       function join() {
         window.location.href = "/join";
       }
