@@ -12,10 +12,9 @@ export const addHtml = (cafe, reviews) => {
   let avarageRate = 0;
   $(".cafe-title").text(cafe.name);
   $(".cafe-intro").text(cafe.content);
-  $(".review-count").text(reviews.length);
+  $(".review-count").text(` (${reviews.length})`);
   $(".cafe-image").attr("src", cafe.url);
-  console.log(reviews, cafe);
-
+  $(".detail-address").text(cafe.address);
   reviews.map((review) => {
     avarageRate += Number(review.rate);
     $(".detail-reviews__container").append(
@@ -43,5 +42,9 @@ export const addHtml = (cafe, reviews) => {
   </div>`
     );
   });
-  $(".cafe-rate").text((avarageRate / reviews.length).toFixed(1));
+  if (avarageRate == 0) {
+    $(".cafe-rate").text("0");
+  } else {
+    $(".cafe-rate").text((avarageRate / reviews.length).toFixed(1));
+  }
 };

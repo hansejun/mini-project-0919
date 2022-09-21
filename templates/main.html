@@ -22,7 +22,10 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
       rel="stylesheet"
@@ -34,7 +37,6 @@
       * {
         font-family: "Gowun Dodum", sans-serif;
       }
-      
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
@@ -47,10 +49,11 @@
             if (cookie) {
                 $('#login').hide();
                 $('#join').hide();
-            } else {  
+            } else {
                 $('#logout').hide();
               }
         }
+      }
       function join() {
         window.location.href = "/join";
       }
@@ -58,14 +61,14 @@
       function login() {
         window.location.href = "/login";
       }
-      </script>
+    </script>
 
-      <script>
+    <script>
       $(document).ready(function () {
         cafes();
       });
 
-        function post() {
+      function post() {
         let url = $("#url").val();
         let name = $("#name").val();
         let address = $("#address").val();
@@ -78,25 +81,30 @@
           alert("카페이름을 입력해주세요");
           return;
         }
-        if (address == '') {
-          alert('카페 주소를 입력해주세요');
+        if (address == "") {
+          alert("카페 주소를 입력해주세요");
           return;
         }
-        if (content == '') {
-          alert('카페 소개를 적어주세요');
+        if (content == "") {
+          alert("카페 소개를 적어주세요");
           return;
         } else {
-        $.ajax({
-          type: "POST",
-          url: "/cafe",
-          data: { url_give: url, name_give: name,address_give: address, content_give : content },
-          success: function (response) {
-            alert(response["msg"]);
-            window.location.reload()
-           },
+          $.ajax({
+            type: "POST",
+            url: "/cafe",
+            data: {
+              url_give: url,
+              name_give: name,
+              address_give: address,
+              content_give: content,
+            },
+            success: function (response) {
+              alert(response["msg"]);
+              window.location.reload();
+            },
           });
         }
-       }
+      }
       function cafes() {
         $.ajax({
           type: "GET",
@@ -106,7 +114,7 @@
             console.log(response["cafes"]);
             let rows = response["cafes"];
             for (let i = 0; i < rows.length; i++) {
-              let id = rows[i]['id'];
+              let id = rows[i]["id"];
               let name = rows[i]["name"];
               let url = rows[i]["url"];
               let address = rows[i]["address"];
@@ -119,29 +127,29 @@
                                     <p style="font-size: 30px;"class="card-text">${name}</p>
                                   </div>
                                 </div>`;
-                              $("#cafe-list").append(temp_html);
-                   }
-              },
-            });
-          }
+              $("#cafe-list").append(temp_html);
+            }
+          },
+        });
+      }
 
 
-          function join() {
-            window.location.href = "/join";
-          }
+      function join() {
+        window.location.href = "/join";
+      }
 
-          function login() {
-            window.location.href = "/login";
-          }
+      function login() {
+        window.location.href = "/login";
+      }
 
-          function logout(){
-             $.removeCookie('mytoken');
-            window.location.href = "/";
-          }
+      function logout() {
+        $.removeCookie("mytoken");
+        window.location.href = "/";
+      }
 
-          function open_box() {
-            $("#post-box").show();
-          }
+      function open_box() {
+        $("#post-box").show();
+      }
 
           function close_box() {
             $("#post-box").hide();
@@ -167,36 +175,20 @@
     </div>
     <div class="mypost" id="post-box">
       <div class="form-floating mb-3">
-        <input
-          id="url"
-          type="text"
-          class="form-control"
-        >
+        <input id="url" type="text" class="form-control" />
         <label>카페사진 url</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          id="name"
-          type="text"
-          class="form-control"
-        >
+        <input id="name" type="text" class="form-control" />
         <label>카페이름</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          id="address"
-          type="text"
-          class="form-control"
-        >
+        <input id="address" type="text" class="form-control" />
         <label>카페 주소를 입력하세요</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          id="content"
-          type="text"
-          class="form-control"
-        >
-          <label>카페소개를 해주세요</label>
+        <input id="content" type="text" class="form-control" />
+        <label>카페소개를 해주세요</label>
       </div>
       <div class="mybtns">
         <button onclick="post()" type="button" class="btn btn-dark">

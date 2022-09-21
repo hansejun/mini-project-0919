@@ -313,21 +313,38 @@
 #map {
   width: 100%;
   height: 100%;
-  background-color: red;
+  z-index: 0;
+}
+
+.map-text {
+  border-radius: 10px;
+  background-color: #5185f7;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+.map-text__wrapper {
+  border: none;
+  display: none;
+}
+
+/* util */
+.none {
+  display: none;
 }
 
 @media screen and (max-width: 950px) {
   .detail-info__description {
     grid-template-columns: 1fr;
-    grid-auto-rows: 1fr 1fr;
+    grid-auto-rows: 1fr;
   }
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 650px) {
   .detail-info__description {
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
   }
-  #map {
+  .map-box {
     display: none;
   }
 }

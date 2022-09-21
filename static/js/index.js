@@ -8,12 +8,22 @@ const btns = document.querySelectorAll(".rate-btn");
 const rateContainer = document.querySelectorAll(".review-form__rate");
 const reviewForm = document.querySelector(".review-form");
 let rateValue = 0;
+const path = location.pathname.substring(8);
+const cookieExists = $.cookie("mytoken");
+if (!cookieExists) {
+  reviewForm.parentElement.classList.add("none");
+}
+
 async function start() {
-  const data = await getDetail(1);
+  const data = await getDetail(Number(path));
   console.log(data);
   cafe = data.data.cafe;
-  console.log(cafe);
-  createMap(cafe.address, cafe.name);
+  if (cafe.address.length < 10) {
+    $(".map-box").addClass("none");
+  } else {
+    createMap(cafe.address, cafe.name);
+  }
+
   reviews = data.data.reviews;
   addHtml(cafe, reviews);
 }

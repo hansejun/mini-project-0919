@@ -8,6 +8,7 @@ import hashlib
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
+from bson.objectid import ObjectId
 
 
 app = Flask(__name__)
@@ -37,8 +38,7 @@ app = Flask(__name__)
 def main():
     return render_template("main.html")
 
-# /detail/<id>
-# def detail(id)
+
 @app.route('/detail/<id>',methods=['GET'])
 def detail(id):
     if request.method == "GET":
@@ -46,19 +46,14 @@ def detail(id):
 
 @app.route('/api/detail/<id>',methods=['GET'])
 def get_detail(id):
-  # 받아온 카페 id를 가지고 있는 카페 데이터를 찾는다.
   cafe = db.cafes1.find_one({'id':int(id)},{'_id':False})
-  # 없으면 실패 리턴
+
   if not cafe:
     return jsonify({'success':False})
-  # 있으면 ~~
   else:
-    # review DB에서 받아온 카페 아이디를 가지고 있는 모든 review 데이터들을 가져온다.
     reviews = list(db.review.find({'cafeId':int(id)}))
-    # ObjectId를 String 형식으로 바꿔준다.
     for review in reviews:
       review["_id"] = str(review['_id'])
-    # front에 {sucess:true, data:{cafe:해당 카페 데이터, 해당 카페에 대한 리뷰들 }}을 전달한다.
     doc = {
       'cafe' : cafe,
       'reviews' : reviews
@@ -68,10 +63,11 @@ def get_detail(id):
 
 @app.route('/api/review',methods=['POST'])
 def post_review():
-  # token 확인
-  # token에서 userId 추출
-  # userId = user.id
-  userId = "qwer123"
+  token_exist = request.cookies.get('mytoken')
+  if not token_exist:
+    return redirect(url_for('/login'))
+  payload = jwt.decode(token_exist, SECRET_KEY, algorithms=['HS256'])
+  userId = payload['id']
   cafeId = request.form['cafeId']
   comment = request.form['comment']
   rate = request.form['rate']
@@ -84,19 +80,27 @@ def post_review():
     'rate' : rate,
     'createdAt' : createdAt
   }
-
+  print(doc)
   db.review.insert_one(doc)
   return jsonify({'success':True})
 
 @app.route('/api/review/<id>',methods=['DELETE'])
 def delete_review(id):
-  # token 확인
-  # token에서 userId 추출
-  # review = db.review.find_one({'_id':ObjectId(id)}) // 받아온 카페의 아이디를 가지고 있는 review 데이터가 있는지 확인
-  # review가 없다면 success false 반환
-  # review가 있다면 review['userId']와 토큰에서 가져온 userId가 같은지 확인
-  # 일치하다면 삭제
-  return jsonify({'success':True})
+  token_exist = request.cookies.get('mytoken')
+  if not token_exist:
+    return redirect(url_for('/login'))
+  payload = jwt.decode(token_exist, SECRET_KEY, algorithms=['HS256'])
+  review = db.review.find_one({'_id':ObjectId(id)})
+  print(review)
+  if not review:
+    return jsonify({'success':False})
+  if review['userId'] == payload['username']:
+    db.review.delete_one({'_id':ObjectId(id)})
+    return jsonify({'success':True})
+  else:
+    return jsonify({'success':False})
+ 
+  
 
 @app.route('/join')
 def join():
