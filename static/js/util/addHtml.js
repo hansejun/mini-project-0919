@@ -7,18 +7,17 @@
 // .review-createdAt
 // .review-comment
 // . review-rate  <i class="fas fa-star"></i>
-const cafeTitle = document.querySelector(".cafe-title");
-const cafeRate = document.querySelector(".cafe-rate");
-const cafeIntro = document.querySelector(".cafe-intro");
-const reviewCount = document.querySelector(".review-count");
+
 export const addHtml = (cafe, reviews) => {
   let avarageRate = 0;
-  cafeTitle.text = cafe.name;
-  cafeIntro.text = cafe.content;
-  reviewCount.text = reviews.length;
-  console.log(reviews);
+  $(".cafe-title").text(cafe.name);
+  $(".cafe-intro").text(cafe.content);
+  $(".review-count").text(reviews.length);
+  $(".cafe-image").attr("src", cafe.url);
+  console.log(reviews, cafe);
+
   reviews.map((review) => {
-    avarageRate += review.rate;
+    avarageRate += Number(review.rate);
     $(".detail-reviews__container").append(
       `<div class="detail-reviews__container-item">
     <div>
@@ -39,10 +38,10 @@ export const addHtml = (cafe, reviews) => {
               : '<i class="fas fa-star blue"></i>';
           })
           .join("")}
-          
       </span>
     </div>
   </div>`
     );
   });
+  $(".cafe-rate").text((avarageRate / reviews.length).toFixed(1));
 };
