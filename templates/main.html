@@ -23,7 +23,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
       rel="stylesheet"
@@ -35,18 +35,22 @@
       * {
         font-family: "Gowun Dodum", sans-serif;
       }
+      .hidden {
+          display: none;
+        }
     </style>
 
     <script>
-
-      function join() {
-        window.location.href = "/join";
+      let cookie = $.cookie('mytoken');
+      if(cookie) {
+        $('login').toggleClass("hidden")
+        $('join').toggleClass("hidden")
+        $('logout').toggleClass("hidden")
+        $('Profile').toggleClass("hidden")
       }
+      </script>
 
-      function login() {
-        window.location.href = "/login";
-      }
-
+      <script>
       $(document).ready(function () {
         cafes();
       });
@@ -68,7 +72,7 @@
           data: { url_give: url, name_give: name },
           success: function (response) {
             alert(response["msg"]);
-            window.location.reload() 
+            window.location.reload()
            },
           });
        }
@@ -94,11 +98,28 @@
                                   </div>
                                 </div>`;
                               $("#cafe-list").append(temp_html);
-                   }     
+                   }
               },
             });
           }
-          
+
+          function profile() {
+            window.location.href = "/profile";
+          }
+
+          function join() {
+            window.location.href = "/join";
+          }
+
+          function login() {
+            window.location.href = "/login";
+          }
+
+          function logout(){
+             $.removeCookie('mytoken');
+            window.location.href = "/";
+          }
+
           function open_box() {
             $("#post-box").show();
           }
@@ -109,16 +130,20 @@
         </script>
       </head>
       <body>
-        <div class="back">
-      <div class="btn">
-        <button onclick="login()" type="button" class="btn btn-primary">
-          login
-        </button>
-        <button onclick="join()" type="button" class="btn btn-primary">
-          join
-        </button>
-      </div>
-    </div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a id="login" onclick="login()" class="nav-link active">login</a>
+          </li>
+          <li class="nav-item">
+            <a id="join" onclick="join()" class="nav-link">join</a>
+          </li>
+          <li class="nav-item">
+            <a id="logout" onclick="logout()" class="nav-link hidden">logout</a>
+          </li>
+          <li class="nav-item">
+            <a id="Profile" onclick="Profile()" class="nav-link hidden">profile</a>
+          </li>
+        </ul>
 
     <div class="search1">
       <h1 style="font-size: 80px;">카 페 어 때</h1>
@@ -131,6 +156,7 @@
           type="email"
           class="form-control"
           placeholder="name@example.com"
+          required
         />
         <label>카페사진 url</label>
       </div>
@@ -141,8 +167,59 @@
           type="text"
           class="form-control"
           placeholder="name@example.com"
+          required
         />
         <label>카페이름</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          id="address"
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          required
+        />
+        <label>카페 주소를 입력하세요</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          id="phone"
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          required
+        />
+        <label>카페 전화번호를 입력하세요</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          id="parcking"
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          required
+        />
+        <label>주차 공간을 적어주세요</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          id="holiday"
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          required
+        />
+        <label>휴일</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          id="webUrl"
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          required
+        />
+        <label>카페 웹 사이트를 입력하세요</label>
       </div>
       <div class="mybtns">
         <button onclick="post()" type="button" class="btn btn-dark">
