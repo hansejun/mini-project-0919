@@ -65,10 +65,7 @@
         let url = $("#url").val();
         let name = $("#name").val();
         let address = $("#address").val();
-        let phone = $("#phone").val();
-        let parcking = $("#parcking").val();
-        let holiday = $("#holiday").val();
-        let webUrl = $("#webUrl").val();
+        let content = $("#content").val();
         if (url == "") {
           alert("url을 입력해주세요");
           return;
@@ -81,27 +78,14 @@
           alert('카페 주소를 입력해주세요');
           return;
         }
-        if (phone == '') {
-          alert('카페 번호를 입력해주세요');
-          return;
-        }
-        if (parcking == '') {
-          alert('주차공간을 입력해주세요');
-          return;
-        }
-        if (holiday == '') {
-          alert('휴일을 입력해주세요');
-          return;
-        }
-        if (webUrl == '') {
-          alert('카페 사이트를 입력해주세요');
+        if (content == '') {
+          alert('카페 소개를 적어주세요');
           return;
         } else {
         $.ajax({
           type: "POST",
           url: "/cafe",
-          data: { url_give: url, name_give: name,address_give: address,
-                  phone_give: phone,parcking_give: parcking,holiday_give: holiday ,webUrl_give: webUrl  },
+          data: { url_give: url, name_give: name,address_give: address, content_give : content },
           success: function (response) {
             alert(response["msg"]);
             window.location.reload()
@@ -122,10 +106,7 @@
               let name = rows[i]["name"];
               let url = rows[i]["url"];
               let address = rows[i]["address"];
-              let phone = rows[i]["phone"];
-              let parcking = rows[i]["parcking"];
-              let holiday = rows[i]["holiday"];
-              let webUrl = rows[i]["webUrl"];
+              let content = rows[i]["content"];
               let temp_html = `<div class="card" style="width: 18rem;">
                                   <a href="detail/${id}">
                                   <img class="card-img-top" src="${url}" alt="Card image cap">
@@ -192,7 +173,7 @@
           id="url"
           type="text"
           class="form-control"
-        />
+        >
         <label>카페사진 url</label>
       </div>
       <div class="form-floating mb-3">
@@ -200,7 +181,7 @@
           id="name"
           type="text"
           class="form-control"
-        />
+        >
         <label>카페이름</label>
       </div>
       <div class="form-floating mb-3">
@@ -213,35 +194,11 @@
       </div>
       <div class="form-floating mb-3">
         <input
-          id="phone"
+          id="content"
           type="text"
           class="form-control"
         >
-        <label>카페 전화번호를 입력하세요</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input
-          id="parcking"
-          type="text"
-          class="form-control"
-        >
-        <label>주차 공간을 적어주세요</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input
-          id="holiday"
-          type="text"
-          class="form-control"
-        >
-        <label>휴일</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input
-          id="webUrl"
-          type="text"
-          class="form-control"
-          >
-          <label>카페 웹 사이트를 입력하세요</label>
+          <label>카페소개를 해주세요</label>
       </div>
       <div class="mybtns">
         <button onclick="post()" type="button" class="btn btn-dark">

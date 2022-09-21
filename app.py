@@ -92,20 +92,13 @@ def cafe_post():
     url_receive = request.form['url_give']
     name_receive = request.form['name_give']
     address_receive = request.form['address_give']
-    phone_receive = request.form['phone_give']
-    parcking_receive = request.form['parcking_give']
-    holiday_receive = request.form['holiday_give']
-    webUrl_receive = request.form['webUrl_give']
+    content_receive = request.form['content_give']
     counts = list(db.cafes1.find({}, {'_id': False}))
     count = len(counts) + 1
     doc = {
         'id' : count,
-        'content' : "",
+        'content' : content_receive,
         'address' : address_receive,
-        'phone' : phone_receive,
-        'parcking' : parcking_receive,
-        'holiday' : holiday_receive,
-        'webUrl' : webUrl_receive,
         'url': url_receive,
         'name': name_receive
     }
