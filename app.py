@@ -1,4 +1,5 @@
 
+from random import randint, random
 from flask import Flask, render_template, request, jsonify
 
 from pymongo import MongoClient
@@ -94,7 +95,8 @@ def cafe_post():
     address_receive = request.form['address_give']
     content_receive = request.form['content_give']
     counts = list(db.cafes1.find({}, {'_id': False}))
-    count = len(counts) + 1
+    i = randint(1,100)
+    count = len(counts) + i
     doc = {
         'id' : count,
         'content' : content_receive,
@@ -104,7 +106,8 @@ def cafe_post():
     }
     db.cafes1.insert_one(doc)
     return jsonify({'msg': '저장완료'})
-
+    # 메인에서 정보입력시 받아온다
+    # 받아와서 cd
 @app.route("/cafes", methods=["GET"])
 def cafes_get():
     cafes = list(db.cafes1.find({}, {'_id': False}))
