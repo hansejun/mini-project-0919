@@ -1,4 +1,6 @@
 .detail-main {
+  max-width: 1200px;
+  margin: 0 auto;
   height: 200vh;
   padding: 0px 10vw 0px 10vw;
   padding-top: 60px;
@@ -40,17 +42,32 @@
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .detail-info__header h2 {
   font-weight: 500;
 }
-.detail-info__header > span {
+.detail-info__header > div {
+  display: flex;
+  align-items: center;
+}
+.detail-info__header > div > span {
   margin-left: 15px;
   color: rgb(81, 133, 247);
 }
-.detail-info__header div {
+.detail-info__header div > div {
   color: rgb(76, 76, 76);
   font-size: 14px;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .detail-info__header {
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  .detail-info__header > div {
+    margin-top: 10px;
+  }
 }
 
 /* detail description ( 카페 정보 ) */
@@ -116,10 +133,9 @@
 
 /* detail-info 카페 소개 */
 .detail-cafe__info {
+  width: 100%;
   padding: 30px 0px 30px 0px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-width: 400px;
+
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -133,6 +149,10 @@
   width: 20%;
   min-width: 120px;
   color: #959595;
+}
+.detail-cafe__info-comment span:last-child {
+  width: 80%;
+  display: block;
 }
 
 /* detail-reviews */
