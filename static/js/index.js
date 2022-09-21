@@ -20,7 +20,6 @@ const handleBtnClick = (e) => {
   console.log(rateBtns);
 
   Array.prototype.forEach.call(rateBtns, (rateBtn, idx) => {
-    console.log(idx);
     if (idx + 1 > rateValue) {
       rateBtn.classList.add("blue");
     }

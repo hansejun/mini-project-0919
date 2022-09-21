@@ -12,7 +12,7 @@ export const addHtml = (cafe, reviews) => {
   let avarageRate = 0;
   $(".cafe-title").text(cafe.name);
   $(".cafe-intro").text(cafe.content);
-  $(".review-count").text(reviews.length);
+  $(".review-count").text(`(${reviews.length})`);
   $(".cafe-image").attr("src", cafe.url);
   console.log(reviews, cafe);
 
