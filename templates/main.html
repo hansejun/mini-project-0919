@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -47,6 +46,13 @@
         $('join').toggleClass("hidden")
         $('logout').toggleClass("hidden")
         $('Profile').toggleClass("hidden")
+
+      function join() {
+        window.location.href = "/join";
+      }
+
+      function login() {
+        window.location.href = "/login";
       }
       </script>
 
@@ -65,10 +71,12 @@
         let webUrl = $("#webUrl").val();
         if (url == ''){
           alert('url을 입력해주세요')
+        if (url == "") {
+          alert("url을 입력해주세요");
           return;
         }
-        if (name == '') {
-          alert('카페이름을 입력해주세요')
+        if (name == "") {
+          alert("카페이름을 입력해주세요");
           return;
         }
         if (address == '') {
@@ -82,11 +90,11 @@
         if (parcking == '') {
           alert('주차공간을 입력해주세요')
           return;
-        } 
+        }
         if (holiday == '') {
           alert('휴일을 입력해주세요')
           return;
-        } 
+        }
         if (webUrl == '') {
           alert('카페 사이트를 입력해주세요')
           return;
@@ -101,7 +109,7 @@
             window.location.reload()
            },
           });
-       }
+        }
       }
       function cafes() {
         $.ajax({
@@ -109,7 +117,7 @@
           url: "/cafes",
           data: {},
           success: function (response) {
-            console.log(response['cafes'])
+            console.log(response["cafes"]);
             let rows = response["cafes"];
             for (let i = 0; i < rows.length; i++) {
               let id = rows[i]['id'];
@@ -177,7 +185,7 @@
         </ul>
 
     <div class="search1">
-      <h1 style="font-size: 80px;">카 페 어 때</h1>
+      <h1 style="font-size: 80px">카 페 어 때</h1>
       <button class="btn2" onclick="open_box()">카페 기록하기</button>
     </div>
     <div class="mypost" id="post-box">

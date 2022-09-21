@@ -1,7 +1,7 @@
 .detail-main {
   max-width: 1200px;
+  min-width: 400px;
   margin: 0 auto;
-  height: 200vh;
   padding: 0px 10vw 0px 10vw;
   padding-top: 60px;
 }
@@ -9,16 +9,16 @@
   padding: 0px 10px 0px 10px;
   width: 100%;
   background-color: white;
+  padding-bottom: 60px;
 }
 .detail-photo {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   overflow: hidden;
   gap: 5px;
   height: 30vh;
 }
 .detail-photo img {
-  width: 100%;
   width: 100%;
   height: 30vh;
   background-image: url("https://source.unsplash.com/640x400/?coffee,cafe");
@@ -50,9 +50,16 @@
   display: flex;
   align-items: center;
 }
-.detail-info__header > div > span {
+.cafe-rate__sub {
+  font-size: 13px;
   margin-left: 15px;
-  color: rgb(81, 133, 247);
+  position: relative;
+  bottom: -3px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.cafe-rate {
+  color: #5185f7;
+  margin-left: 7px;
 }
 .detail-info__header div > div {
   color: rgb(76, 76, 76);
@@ -67,6 +74,9 @@
   }
   .detail-info__header > div {
     margin-top: 10px;
+  }
+  .cafe-rate__sub {
+    display: none;
   }
 }
 
@@ -146,7 +156,6 @@
   color: rgba(0, 0, 0, 0.8);
 }
 .detail-cafe__info-comment span:first-child {
-  width: 20%;
   min-width: 120px;
   color: #959595;
 }
@@ -162,7 +171,7 @@
 .detail-reviews__header {
   font-size: 20px;
   color: rgba(0, 0, 0, 0.7);
-  padding: 30px 0px 30px 0px;
+  padding: 30px 0px 10px 0px;
 }
 .detail-reviews__header span {
   color: rgba(0, 0, 0, 0.5);
@@ -174,8 +183,10 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  padding: 20px 10px 20px 10px;
+  padding: 20px 10px 30px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  min-height: 110px;
 }
 .detail-reviews__container-item:hover {
   background-color: rgba(0, 0, 0, 0.05);
@@ -183,13 +194,28 @@
 .detail-reviews__container-item div:first-child {
   min-width: 120px;
   position: relative;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: -10px;
 }
 
 .detail-reviews__container-item div:first-child img {
   width: 60px;
   height: 60px;
-  background-color: gray;
+  box-shadow: 1px 1px 1px 1px rgba(5, 67, 252, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
+  padding: 10px;
+}
+.review-name {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
 }
 .container-item-review {
   display: flex;
@@ -208,7 +234,71 @@
   line-height: 1.4;
 }
 
-.review-rate {
+.review-rate i {
   font-size: 13px;
+}
+
+/* review form */
+.detail-review-form {
+  padding-top: 25px;
+}
+.review-form {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.review-form h2 {
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.review-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  outline: none;
+}
+.review-form textarea:focus {
+  border: 2px solid #5185f7;
+}
+.review-form__button {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #5185f7;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+  cursor: pointer;
+}
+.review-form__button:hover {
+  background-color: #406ed2;
+}
+.review-form h2 {
+  margin-bottom: 15px;
+}
+.review-form__rate {
+  margin-bottom: 25px;
+}
+.review-form__rate i {
+  cursor: pointer;
+}
+.review-form__rate button {
+  background-color: inherit;
+  color: gray;
+  font-size: 25px;
+  border: none;
+}
+.blue {
   color: #5185f7;
+}
+.gray {
+  color: gray;
 }
