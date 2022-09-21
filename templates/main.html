@@ -55,7 +55,7 @@
         let url = $("#url").val();
         let name = $("#name").val();
         if (url == ''){
-          alert('http:// 넣어서 url을 입력해주세요')
+          alert('url을 입력해주세요')
         } else if (name == '') {
           alert('카페이름을 입력해주세요')
         } else {
@@ -81,8 +81,8 @@
               // let num = rows[i]['num']
               let name = rows[i]["name"];
               let url = rows[i]["url"];
-              let temp_html = `<a href="detail">
-                                <div class="card" style="width: 18rem;">
+              let temp_html = `<div class="card" style="width: 18rem;">
+                                  <a href="detail">
                                   <img class="card-img-top" src="${url}" alt="Card image cap">
                                   </a>
                                   <div class="card-body">
