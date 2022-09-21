@@ -18,6 +18,7 @@ def main():
     return render_template("main.html")
 
 
+
 @app.route('/detail/<id>',methods=['GET','POST'])
 def detail():
     return render_template("detail.html")
@@ -35,7 +36,6 @@ def cafe_post():
     url_receive = request.form['url_give']
     name_receive = request.form['name_give']
     counts = list(db.cafes1.find({}, {'_id': False}))
-
     count = len(counts) + 1
     doc = {
         'id' : count,

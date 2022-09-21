@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,6 +16,7 @@
       href='{{ url_for("static", filename="maincss/mainstyle.css") }}'
       rel="stylesheet"
     />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -36,6 +38,7 @@
     </style>
 
     <script>
+
       function join() {
         window.location.href = "/join";
       }
@@ -78,32 +81,31 @@
               // let num = rows[i]['num']
               let name = rows[i]["name"];
               let url = rows[i]["url"];
-              let temp_html = `
-                                        <a href="detail/1">
-                                    <div class="card" style="width: 18rem;">
-                                      <img class="card-img-top" src="${url}" alt="Card image cap">
-                                      </a>
-                                      <div class="card-body">
-                                        <p style="font-size: 30px;"class="card-text">${name}</p>
-                                      </div>
-                                    </div>`;
-              $("#cafe-list").append(temp_html);
-            }
-          },
-        });
-      }
+              let temp_html = `<a href="detail">
+                                <div class="card" style="width: 18rem;">
+                                  <img class="card-img-top" src="${url}" alt="Card image cap">
+                                  </a>
+                                  <div class="card-body">
+                                    <p style="font-size: 30px;"class="card-text">${name}</p>
+                                  </div>
+                                </div>`;
+                              $("#cafe-list").append(temp_html);
+                   }     
+              },
+            });
+          }
 
-      function open_box() {
-        $("#post-box").show();
-      }
+          function open_box() {
+            $("#post-box").show();
+          }
 
-      function close_box() {
-        $("#post-box").hide();
-      }
-    </script>
-  </head>
-  <body>
-    <div class="back">
+          function close_box() {
+            $("#post-box").hide();
+          }
+        </script>
+      </head>
+      <body>
+        <div class="back">
       <div class="btn">
         <button onclick="login()" type="button" class="btn btn-primary">
           login
