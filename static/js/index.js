@@ -9,7 +9,9 @@ const reviewForm = document.querySelector(".review-form");
 let rateValue = 0;
 async function start() {
   const data = await getDetail(1);
+  console.log(data);
   cafe = data.data.cafe;
+
   reviews = data.data.reviews;
   addHtml(cafe, reviews);
 }
@@ -32,6 +34,16 @@ const handleBtnClick = (e) => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  const comment = e.target.comment.value;
+  if (comment == "") {
+    e.target.comment.focus();
+    return;
+  } else if (rateValue == 0) {
+    rateContainer.focus();
+    alert("평점을 입력해주세요!");
+    return;
+  }
+
   const sendData = {
     comment: e.target.comment.value,
     createdAt: new Date().toISOString().substring(2, 10),

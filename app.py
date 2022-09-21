@@ -28,7 +28,7 @@ def detail(id):
 @app.route('/api/detail/<id>',methods=['GET'])
 def get_detail(id):
   # 받아온 카페 id를 가지고 있는 카페 데이터를 찾는다.
-  cafe = db.cafe.find_one({'id':int(id)},{'_id':False})
+  cafe = db.cafes1.find_one({'id':int(id)},{'_id':False})
   # 없으면 실패 리턴
   if not cafe:
     return jsonify({'success':False})
@@ -57,7 +57,7 @@ def post_review():
   comment = request.form['comment']
   rate = request.form['rate']
   createdAt = request.form['createdAt']
-  print(request.form)
+  
   doc = {
     'userId':userId,
     'cafeId' : int(cafeId),
