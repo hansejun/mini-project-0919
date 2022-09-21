@@ -6,8 +6,10 @@
     <meta name="viewport" content="widspan class="detail-th=device-widspan class="detail-th", initial-scale="1.0" />
     <link rel="stylesheet" href='{{ url_for("static", filename="css/style.css") }}' />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <title></title>
-    <script></script>
+    <script>
+    </script>
   </head>
   <body>
     <header>
@@ -45,7 +47,7 @@
             <div class="detail-table">
               <div class="detail-tr">
                 <span class="detail-th">주소</span class="detail-th">
-                <span class="detail-td">서울특별시 관악구 행운1길 79 상가 104호</span class="detail-td">
+                <span class="detail-td detail-address"></span class="detail-td">
               </div class="detail-tr">
               <div class="detail-tr">
                 <span class="detail-th">전화번호</span class="detail-th">
@@ -75,16 +77,16 @@
                 <span class="detail-th">메뉴</span class="detail-th">
                 <span class="detail-td detail-menu">
                   <div>
-                    <span>두가지맛</span>
+                    <span>아이스 아메리카노</span>
                     <span>6,000원</span>
                   </div>
                   <div>
-                    <span>세가지맛</span>
-                    <span>19,000원</span>
+                    <span>카페라떼</span>
+                    <span>7,000원</span>
                   </div>
                   <div>
-                    <span>여섯가지맛</span>
-                    <span>35,000원</span>
+                    <span>아인슈페너</span>
+                    <span>8,000원</span>
                   </div>
                 </span class="detail-td">
               </div class="detail-tr">
@@ -104,7 +106,7 @@
           </div>
         </section>
         <section class="detail-reviews">
-          <div class="detail-reviews__header">리뷰<span class="review-count">(49)</span></div>
+          <div class="detail-reviews__header">리뷰<span class="review-count"></span></div>
           <div class="detail-reviews__container">
           </div>
         </section>

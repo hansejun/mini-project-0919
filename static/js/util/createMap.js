@@ -3,11 +3,9 @@ const mapOption = {
   center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
   level: 3, // 지도의 확대 레벨
 };
-export const createMap = (adress, name) => {
+export const createMap = (address, name) => {
   const map = new kakao.maps.Map(mapContainer, mapOption);
-  console.log(map);
   const geocoder = new kakao.maps.services.Geocoder();
-
   geocoder.addressSearch(
     address ? address : "서울특별시 관악구 행운1길 79 상가 104호",
     function (result, status) {
