@@ -46,7 +46,7 @@
         $('join').toggleClass("hidden")
         $('logout').toggleClass("hidden")
         $('Profile').toggleClass("hidden")
-
+      }
       function join() {
         window.location.href = "/join";
       }
@@ -61,7 +61,7 @@
         cafes();
       });
 
-      function post() {
+        function post() {
         let url = $("#url").val();
         let name = $("#name").val();
         let address = $("#address").val();
@@ -69,8 +69,6 @@
         let parcking = $("#parcking").val();
         let holiday = $("#holiday").val();
         let webUrl = $("#webUrl").val();
-        if (url == ''){
-          alert('url을 입력해주세요')
         if (url == "") {
           alert("url을 입력해주세요");
           return;
@@ -80,23 +78,23 @@
           return;
         }
         if (address == '') {
-          alert('카페 주소를 입력해주세요')
+          alert('카페 주소를 입력해주세요');
           return;
         }
         if (phone == '') {
-          alert('카페 번호를 입력해주세요')
+          alert('카페 번호를 입력해주세요');
           return;
         }
         if (parcking == '') {
-          alert('주차공간을 입력해주세요')
+          alert('주차공간을 입력해주세요');
           return;
         }
         if (holiday == '') {
-          alert('휴일을 입력해주세요')
+          alert('휴일을 입력해주세요');
           return;
         }
         if (webUrl == '') {
-          alert('카페 사이트를 입력해주세요')
+          alert('카페 사이트를 입력해주세요');
           return;
         } else {
         $.ajax({
@@ -110,7 +108,7 @@
            },
           });
         }
-      }
+       }
       function cafes() {
         $.ajax({
           type: "GET",
