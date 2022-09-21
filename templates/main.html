@@ -56,8 +56,11 @@
         let name = $("#name").val();
         if (url == ''){
           alert('url을 입력해주세요')
-        } else if (name == '') {
+          return;
+        }
+        if (name == '') {
           alert('카페이름을 입력해주세요')
+          return;
         } else {
         $.ajax({
           type: "POST",
@@ -76,6 +79,7 @@
           url: "/cafes",
           data: {},
           success: function (response) {
+            console.log(response['cafes'])
             let rows = response["cafes"];
             for (let i = 0; i < rows.length; i++) {
               // let num = rows[i]['num']
@@ -94,7 +98,7 @@
               },
             });
           }
-
+          
           function open_box() {
             $("#post-box").show();
           }
