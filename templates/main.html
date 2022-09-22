@@ -40,20 +40,20 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
-      const cookieExists = $.cookie("mytoken")
-      $(document).ready(function (){
-            show_sign();
-        });
-        let cookie = $.cookie('mytoken')
-        function show_sign() {
-            if (cookie) {
-                $('#login').hide();
-                $('#join').hide();
-            } else {
-                $('#logout').hide();
-              }
+      const cookieExists = $.cookie("mytoken");
+      $(document).ready(function () {
+        show_sign();
+      });
+      let cookie = $.cookie("mytoken");
+      function show_sign() {
+        if (cookie) {
+          $("#login").hide();
+          $("#join").hide();
+        } else {
+          $("#logout").hide();
         }
-      
+      }
+
       function join() {
         window.location.href = "/join";
       }
@@ -133,7 +133,6 @@
         });
       }
 
-
       function join() {
         window.location.href = "/join";
       }
@@ -151,23 +150,23 @@
         $("#post-box").show();
       }
 
-          function close_box() {
-            $("#post-box").hide();
-          }
-        </script>
-      </head>
-      <body>
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a id="login" onclick="login()" class="nav-link active">login</a>
-          </li>
-          <li class="nav-item">
-            <a id="join" onclick="join()" class="nav-link">join</a>
-          </li>
-          <li class="nav-item">
-            <a id="logout" onclick="logout()" class="nav-link hidden">logout</a>
-          </li>
-        </ul>
+      function close_box() {
+        $("#post-box").hide();
+      }
+    </script>
+  </head>
+  <body>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a id="login" onclick="login()" class="nav-link active">login</a>
+      </li>
+      <li class="nav-item">
+        <a id="join" onclick="join()" class="nav-link">join</a>
+      </li>
+      <li class="nav-item">
+        <a id="logout" onclick="logout()" class="nav-link hidden">logout</a>
+      </li>
+    </ul>
 
     <div class="search1">
       <h1 style="font-size: 80px">카 페 어 때</h1>

@@ -51,12 +51,18 @@ def get_detail(id):
   if not cafe:
     return jsonify({'success':False})
   else:
+    token_exist = request.cookies.get('mytoken')
+    if token_exist:
+      payload = jwt.decode(token_exist, SECRET_KEY, algorithms=['HS256'])
+    else:
+      payload = {'id':'id'}
     reviews = list(db.review.find({'cafeId':int(id)}))
     for review in reviews:
       review["_id"] = str(review['_id'])
     doc = {
       'cafe' : cafe,
-      'reviews' : reviews
+      'reviews' : reviews,
+      'userId' : payload['id']
     }
   return jsonify({'success':True,'data':doc})
 
@@ -86,6 +92,7 @@ def post_review():
 
 @app.route('/api/review/<id>',methods=['DELETE'])
 def delete_review(id):
+  print(id)
   token_exist = request.cookies.get('mytoken')
   if not token_exist:
     return redirect(url_for('/login'))
@@ -94,7 +101,7 @@ def delete_review(id):
   print(review)
   if not review:
     return jsonify({'success':False})
-  if review['userId'] == payload['username']:
+  if review['userId'] == payload['id']:
     db.review.delete_one({'_id':ObjectId(id)})
     return jsonify({'success':True})
   else:

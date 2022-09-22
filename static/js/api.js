@@ -9,7 +9,6 @@ export const createReview = ({ createdAt, rate, cafeId, comment }) => {
     url: "/api/review",
     data: { createdAt, rate, cafeId, comment },
     success: function (response) {
-      alert(response["msg"]);
       window.location.reload();
     },
   });

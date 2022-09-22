@@ -4,9 +4,11 @@ import { createMap } from "./util/createMap.js";
 
 let cafe = {};
 let reviews = [];
+let userId = "";
 const btns = document.querySelectorAll(".rate-btn");
 const rateContainer = document.querySelectorAll(".review-form__rate");
 const reviewForm = document.querySelector(".review-form");
+const logoutBtn = document.querySelector(".logout");
 let rateValue = 0;
 const path = location.pathname.substring(8);
 const cookieExists = $.cookie("mytoken");
@@ -18,6 +20,7 @@ async function start() {
   const data = await getDetail(Number(path));
   console.log(data);
   cafe = data.data.cafe;
+  userId = data.data.userId;
   if (cafe.address.length < 10) {
     $(".map-box").addClass("none");
   } else {
@@ -25,7 +28,7 @@ async function start() {
   }
 
   reviews = data.data.reviews;
-  addHtml(cafe, reviews);
+  addHtml(cafe, reviews, userId || "");
 }
 
 const handleBtnClick = (e) => {
@@ -51,7 +54,6 @@ const handleSubmit = async (e) => {
     e.target.comment.focus();
     return;
   } else if (rateValue == 0) {
-    rateContainer.focus();
     alert("평점을 입력해주세요!");
     return;
   }
@@ -72,3 +74,14 @@ btns.forEach((btn) => {
 });
 
 reviewForm.addEventListener("submit", handleSubmit);
+
+if ($.cookie("mytoken")) {
+  $(".login").toggleClass("none");
+  $(".join").toggleClass("none");
+  $(".logout").toggleClass("none");
+}
+$(".logout").click(() => {
+  $.removeCookie("mytoken", { path: "/" });
+  alert("로그아웃!");
+  window.location.href = "/";
+});
