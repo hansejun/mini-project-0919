@@ -21,7 +21,7 @@ async function start() {
   console.log(data);
   cafe = data.data.cafe;
   userId = data.data.userId;
-  if (cafe.address.length < 10) {
+  if (cafe.address.length < 3) {
     $(".map-box").addClass("none");
   } else {
     createMap(cafe.address, cafe.name);
