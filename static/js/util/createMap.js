@@ -32,7 +32,6 @@ export const createMap = (address, name) => {
 
         wrapper.className = "map-text__wrapper";
         wrapper.style.border = "none";
-
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
       }
