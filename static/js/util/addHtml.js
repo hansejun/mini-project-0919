@@ -32,7 +32,7 @@ export const addHtml = (cafe, reviews, userId) => {
     </div>
     <div class="container-item-review">
       <span class="review-createdAt">${review.createdAt}</span>
-      <p class="review-comment">${review.comment}</p>
+      <pre class="review-comment">${review.comment}</pre>
       <div class="review-fn">
         <span class="review-rate">
           ${Array(5)
