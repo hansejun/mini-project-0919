@@ -27,8 +27,8 @@ SECRET_KEY = 'SPARTA'
 #client = MongoClient('mongodb+srv://test:sparta@cluster0.l5fmn4e.mongodb.net/Cluster0?retryWrites=true&w=majority')
 #db = client.popular
 
-
-client = MongoClient('mongodb+srv://youwa65:ss3108@cluster0.wrjvztk.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('mongodb+srv://youwa65:ss3108@cluster0.wrjvztk.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.cafe
 
 app = Flask(__name__)
