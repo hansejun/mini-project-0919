@@ -9,7 +9,7 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 from bson.objectid import ObjectId
-
+import random
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -24,11 +24,8 @@ SECRET_KEY = 'SPARTA'
 
 
 
-#client = MongoClient('mongodb+srv://test:sparta@cluster0.l5fmn4e.mongodb.net/Cluster0?retryWrites=true&w=majority')
-#db = client.popular
 
-client = MongoClient('mongodb://test:test@localhost', 27017)
-# client = MongoClient('mongodb+srv://youwa65:ss3108@cluster0.wrjvztk.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://youwa65:ss3108@cluster0.wrjvztk.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.cafe
 
 app = Flask(__name__)
@@ -189,11 +186,8 @@ def cafe_post():
     name_receive = request.form['name_give']
     address_receive = request.form['address_give']
     content_receive = request.form['content_give']
-    counts = list(db.cafes1.find({}, {'_id': False}))
-    i = randint(1,100)
-    count = len(counts) + i
     doc = {
-        'id' : count,
+        'id' : random.randrange(1,10000),
         'content' : content_receive,
         'address' : address_receive,
         'url': url_receive,
