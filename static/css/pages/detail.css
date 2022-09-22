@@ -1,7 +1,6 @@
 .detail-main {
   max-width: 1200px;
   min-width: 400px;
-  margin: 0 auto;
   padding: 0px 10vw 0px 10vw;
   padding-top: 60px;
 }
@@ -50,9 +49,16 @@
   display: flex;
   align-items: center;
 }
-.detail-info__header > div > span {
+.cafe-rate__sub {
+  font-size: 13px;
   margin-left: 15px;
-  color: rgb(81, 133, 247);
+  position: relative;
+  bottom: -3px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.cafe-rate {
+  color: #5185f7;
+  margin-left: 7px;
 }
 .detail-info__header div > div {
   color: rgb(76, 76, 76);
@@ -68,6 +74,9 @@
   .detail-info__header > div {
     margin-top: 10px;
   }
+  .cafe-rate__sub {
+    display: none;
+  }
 }
 
 /* detail description ( 카페 정보 ) */
@@ -77,6 +86,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 30px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 30px;
 }
@@ -177,6 +187,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   min-height: 110px;
+  transition: background-color, 0.3s;
 }
 .detail-reviews__container-item:hover {
   background-color: rgba(0, 0, 0, 0.05);
@@ -213,7 +224,7 @@
 }
 .review-createdAt {
   color: rgba(0, 0, 0, 0.4);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   margin-bottom: 10px;
 }
@@ -223,9 +234,29 @@
   margin-bottom: 10px;
   line-height: 1.4;
 }
-
+.review-fn {
+  display: flex;
+  align-items: center;
+}
 .review-rate i {
   font-size: 13px;
+}
+.review-delete {
+  background-color: inherit;
+  border: none;
+  position: relative;
+  bottom: -3px;
+  margin-left: 10px;
+  color: rgb(253, 66, 66);
+  cursor: pointer;
+  padding: 7px;
+  z-index: 3;
+  border-radius: 12px;
+  transition: background-color, 0.3s;
+}
+.review-delete:hover {
+  background-color: rgb(253, 66, 66);
+  color: white;
 }
 
 /* review form */
@@ -267,6 +298,7 @@
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   margin-top: 20px;
   cursor: pointer;
+  transition: background-color, 0.3s;
 }
 .review-form__button:hover {
   background-color: #406ed2;
@@ -279,6 +311,7 @@
 }
 .review-form__rate i {
   cursor: pointer;
+  transition: color 0.2s;
 }
 .review-form__rate button {
   background-color: inherit;
@@ -291,4 +324,49 @@
 }
 .gray {
   color: gray;
+}
+
+/* map */
+.map-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#map {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.map-text {
+  border-radius: 10px;
+  background-color: #5185f7;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+.map-text__wrapper {
+  border: none;
+  display: none;
+}
+
+/* util */
+.none {
+  display: none;
+}
+
+@media screen and (max-width: 950px) {
+  .detail-info__description {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+  }
+}
+@media screen and (max-width: 650px) {
+  .detail-info__description {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+  }
+  .map-box {
+    display: none;
+  }
 }

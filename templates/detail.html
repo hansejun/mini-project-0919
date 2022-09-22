@@ -6,18 +6,19 @@
     <meta name="viewport" content="widspan class="detail-th=device-widspan class="detail-th", initial-scale="1.0" />
     <link rel="stylesheet" href='{{ url_for("static", filename="css/style.css") }}' />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <title></title>
-    <script></script>
+    <script>
+    </script>
   </head>
   <body>
     <header>
       <nav class="detail-nav shadow">
-        <a href="/"><h2 class="nav-logo">CAFFE O TTE</h2></a>
+        <a href="/"><h2 class="nav-logo">카페어때</h2></a>
         <ul>
           <a href="/login" class="login"><li>로그인</li></a>
           <a href="/join" class="join"><li>회원가입</li></a>
-          <a href="/profile" class="hidden profile"><li>프로필</li></a>
-          <a href="/logout" class="hidden logout"><li>로그아웃</li></a>
+          <li class="logout none">로그아웃</li>
         </ul>
       </nav>
     </header>
@@ -32,6 +33,7 @@
           <div class="detail-info__header">
             <h2 class="cafe-title"></h2>
             <div>
+              <span class="cafe-rate__sub">평점</span>
               <span class="cafe-rate"></span>
               <div>
                 <i class="far fa-comment-alt"></i>
@@ -44,7 +46,7 @@
             <div class="detail-table">
               <div class="detail-tr">
                 <span class="detail-th">주소</span class="detail-th">
-                <span class="detail-td">서울특별시 관악구 행운1길 79 상가 104호</span class="detail-td">
+                <span class="detail-td detail-address"></span class="detail-td">
               </div class="detail-tr">
               <div class="detail-tr">
                 <span class="detail-th">전화번호</span class="detail-th">
@@ -74,46 +76,50 @@
                 <span class="detail-th">메뉴</span class="detail-th">
                 <span class="detail-td detail-menu">
                   <div>
-                    <span>두가지맛</span>
+                    <span>아이스 아메리카노</span>
                     <span>6,000원</span>
                   </div>
                   <div>
-                    <span>세가지맛</span>
-                    <span>19,000원</span>
+                    <span>카페라떼</span>
+                    <span>7,000원</span>
                   </div>
                   <div>
-                    <span>여섯가지맛</span>
-                    <span>35,000원</span>
+                    <span>아인슈페너</span>
+                    <span>8,000원</span>
                   </div>
                 </span class="detail-td">
               </div class="detail-tr">
             </div>
-            <div></div>
+            <div class="map-box">
+              <div id="map"></div>
+            </div>
           </div>
           <div class="detail-cafe__info">
             <div class="detail-cafe__info-comment">
               <span>카페소개</span>
               <span class="cafe-intro">** 영업시간 유동적, 업체 문의후 방문권장</span>
             </div>
-            <div></div>
+            <div>
+             
+            </div>
           </div>
         </section>
         <section class="detail-reviews">
-          <div class="detail-reviews__header">리뷰<span class="review-count">(49)</span></div>
+          <div class="detail-reviews__header">리뷰<span class="review-count"></span></div>
           <div class="detail-reviews__container">
           </div>
         </section>
         <section class="detail-review-form">
           <form class="review-form">
             <h2>리뷰 작성하기</h2>
-            <span class="review-form__rate">
-              <button class="rate-btn" value="1"><i class="fas fa-star star1"></i></button>
-              <button class="rate-btn" value="2"><i class="fas fa-star star2"></i></button>
-              <button class="rate-btn" value="3"><i class="fas fa-star star3"></i></button>
-              <button class="rate-btn" value="4"><i class="fas fa-star star4"></i></button>
-              <button class="rate-btn" value="5"><i class="fas fa-star star5"></i></button>
-            </span>
-            <textarea class="review-form__text" cols="50" rows="10"></textarea>
+            <div class="review-form__rate">
+              <button class="rate-btn" value="1"><i class="fas fa-star"></i></button>
+              <button class="rate-btn" value="2"><i class="fas fa-star"></i></button>
+              <button class="rate-btn" value="3"><i class="fas fa-star"></i></button>
+              <button class="rate-btn" value="4"><i class="fas fa-star"></i></button>
+              <button class="rate-btn" value="5"><i class="fas fa-star"></i></button>
+            </div>
+            <textarea class="review-form__text" cols="50" rows="10" id="comment" name="comment"></textarea>
             <button class="review-form__button">리뷰 작성</button>
           </form>
         </section>
@@ -123,6 +129,7 @@
       src="https://kit.fontawesome.com/6478f529f2.js"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b62d299611d0b1a4e1d36062ad2d435&libraries=services"></script>
     <script type="module" src='{{ url_for("static", filename="js/index.js") }}'></script>
   </body>
 </html>

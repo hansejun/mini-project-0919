@@ -22,7 +22,10 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
       rel="stylesheet"
@@ -35,8 +38,22 @@
         font-family: "Gowun Dodum", sans-serif;
       }
     </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
+      const cookieExists = $.cookie("mytoken");
+      $(document).ready(function () {
+        show_sign();
+      });
+      let cookie = $.cookie("mytoken");
+      function show_sign() {
+        if (cookie) {
+          $("#login").hide();
+          $("#join").hide();
+        } else {
+          $("#logout").hide();
+        }
+      }
+
       function join() {
         window.location.href = "/join";
       }
@@ -44,7 +61,9 @@
       function login() {
         window.location.href = "/login";
       }
+    </script>
 
+    <script>
       $(document).ready(function () {
         cafes();
       });
@@ -59,11 +78,24 @@
         if (name == "") {
           alert("카페이름을 입력해주세요");
           return;
+        }
+        if (address == "") {
+          alert("카페 주소를 입력해주세요");
+          return;
+        }
+        if (content == "") {
+          alert("카페 소개를 적어주세요");
+          return;
         } else {
           $.ajax({
             type: "POST",
             url: "/cafe",
-            data: { url_give: url, name_give: name },
+            data: {
+              url_give: url,
+              name_give: name,
+              address_give: address,
+              content_give: content,
+            },
             success: function (response) {
               alert(response["msg"]);
               window.location.reload();
@@ -80,11 +112,13 @@
             console.log(response["cafes"]);
             let rows = response["cafes"];
             for (let i = 0; i < rows.length; i++) {
-              let num = rows[i]["num"];
+              let id = rows[i]["id"];
               let name = rows[i]["name"];
               let url = rows[i]["url"];
+              let address = rows[i]["address"];
+              let content = rows[i]["content"];
               let temp_html = `<div class="card" style="width: 18rem;">
-                                  <a href="detail">
+                                  <a href="detail/${id}">
                                   <img class="card-img-top" src="${url}" alt="Card image cap">
                                   </a>
                                   <div class="card-body">
@@ -97,6 +131,19 @@
         });
       }
 
+      function join() {
+        window.location.href = "/join";
+      }
+
+      function login() {
+        window.location.href = "/login";
+      }
+
+      function logout() {
+        $.removeCookie("mytoken");
+        window.location.href = "/";
+      }
+
       function open_box() {
         $("#post-box").show();
       }
@@ -107,16 +154,17 @@
     </script>
   </head>
   <body>
-    <div class="back">
-      <div class="btn">
-        <button onclick="login()" type="button" class="btn btn-primary">
-          login
-        </button>
-        <button onclick="join()" type="button" class="btn btn-primary">
-          join
-        </button>
-      </div>
-    </div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a id="login" onclick="login()" class="nav-link active">login</a>
+      </li>
+      <li class="nav-item">
+        <a id="join" onclick="join()" class="nav-link">join</a>
+      </li>
+      <li class="nav-item">
+        <a id="logout" onclick="logout()" class="nav-link hidden">logout</a>
+      </li>
+    </ul>
 
     <div class="search1">
       <h1 style="font-size: 80px">카 페 어 때</h1>
@@ -124,23 +172,20 @@
     </div>
     <div class="mypost" id="post-box">
       <div class="form-floating mb-3">
-        <input
-          id="url"
-          type="email"
-          class="form-control"
-          placeholder="name@example.com"
-        />
+        <input id="url" type="text" class="form-control" />
         <label>카페사진 url</label>
       </div>
-
       <div class="form-floating mb-3">
-        <input
-          id="name"
-          type="text"
-          class="form-control"
-          placeholder="name@example.com"
-        />
+        <input id="name" type="text" class="form-control" />
         <label>카페이름</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input id="address" type="text" class="form-control" />
+        <label>카페 주소를 입력하세요</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input id="content" type="text" class="form-control" />
+        <label>카페소개를 해주세요</label>
       </div>
       <div class="mybtns">
         <button onclick="post()" type="button" class="btn btn-dark">
